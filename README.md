@@ -1,6 +1,6 @@
 # Witnessing Quantum Entanglement Using Resonant Inelastic X-ray Scattering
 
-Analysis code and data accompanying the manuscript by Tianhao Ren, Yao Shen, Marton Lajer and collaborators, *Witnessing Quantum Entanglement Using Resonant Inelastic X-ray Scattering* (supplied manuscript dated October 5, 2026).
+Analysis code and data accompanying the manuscript by Tianhao Ren, Yao Shen, Marton Lajer and collaborators, *Witnessing Quantum Entanglement Using Resonant Inelastic X-ray Scattering*.
 
 The project uses resonant inelastic x-ray scattering (RIXS) spectra and model calculations to construct a quantum Fisher information (QFI) entanglement witness. It studies the iridate dimers Ba₃CeIr₂O₉ and Ba₃TaIr₂O₉. The Ce model has ten valence electrons and is restricted to the t₂g manifold; the Ta model has eleven valence electrons and permits up to one e_g electron. The manuscript's Ce entanglement certification is model-assisted and accounts for twisted parity and electron-number conservation.
 
@@ -11,21 +11,19 @@ There are two ways to use the repository:
 
 ## Installation
 
-Use the accompanying `edrixs-combined.yml` in the repository root:
+Use the accompanying `edrixs-QFI.yml` in the repository root:
 
 ```bash
-conda env create -f edrixs-combined.yml
-conda activate edrixs-combined
+conda env create -f edrixs-QFI.yml
+conda activate edrixs-QFI
 python -m pip check
 ```
 
-The environment targets Linux and combines the numerical versions used on Thalia with Matplotlib 3.11.2 from the cleaned-up plotting environment on Antares2. Direct analysis dependencies are NumPy, SciPy, Matplotlib, EDRIXS, Bayesian Optimization, Py-BOBYQA and tqdm. Notebook tools and required indirect dependencies are also installed. The supplied repository does not use PyTorch, JAX, Keras, Numba or PyKeOps.
-
-The environment specification has been checked statically; installation and full calculation runs have not been validated as part of preparing this documentation.
+The environment targets Linux and combines the numerical versions used on the BNL Thalia cluster with Matplotlib 3.11.2. Direct analysis dependencies are NumPy, SciPy, Matplotlib, EDRIXS, Bayesian Optimization, Py-BOBYQA and tqdm. Notebook tools and required indirect dependencies are also installed..
 
 ## Plot the supplied results
 
-Start JupyterLab from the repository root and select the `edrixs-combined` kernel:
+Start JupyterLab from the repository root and select the `edrixs-QFI` kernel:
 
 ```bash
 jupyter lab RIXS_QFI_paper_figures.ipynb
@@ -69,7 +67,7 @@ Figure numbers below follow the supplied main manuscript and supplement.
 
 ## Reproducibility notes
 
-The original figures were produced with several Matplotlib versions. The combined environment provides a common plotting version; identical historical rendering is not guaranteed. BO seeds are recoverable from the saved run records. Historical QFI random starts are not, so newly optimized values can differ numerically.
+The original figures were produced with several Matplotlib versions. The combined environment provides a common plotting version; identical historical rendering is not guaranteed. BO seeds are recoverable from the saved run records. Historical QFI random starts are not, so newly optimized values can slightly differ numerically.
 
-The [reproduction guide](docs/reproduction.md) records the verified command arguments, parameter-column order, candidate counts, output files and remaining limitations. In particular, use the corrected Ce BO bounds before rerunning the historical `test4` search, and distinguish the Ta QFI scripts' 9 K setting from the notebook's 11 K QFI-integration setting.
+The [reproduction guide](docs/reproduction.md) records the verified command arguments, parameter-column order, candidate counts and output files.
 
