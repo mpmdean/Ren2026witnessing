@@ -1,6 +1,6 @@
 # Witnessing Quantum Entanglement Using Resonant Inelastic X-ray Scattering
 
-Analysis code and data accompanying the manuscript by Tianhao Ren and collaborators, *Witnessing Quantum Entanglement Using Resonant Inelastic X-ray Scattering* (supplied manuscript dated October 5, 2026).
+Analysis code and data accompanying the manuscript by Tianhao Ren, Yao Shen, Marton Lajer and collaborators, *Witnessing Quantum Entanglement Using Resonant Inelastic X-ray Scattering* (supplied manuscript dated October 5, 2026).
 
 The project uses resonant inelastic x-ray scattering (RIXS) spectra and model calculations to construct a quantum Fisher information (QFI) entanglement witness. It studies the iridate dimers Ba₃CeIr₂O₉ and Ba₃TaIr₂O₉. The Ce model has ten valence electrons and is restricted to the t₂g manifold; the Ta model has eleven valence electrons and permits up to one e_g electron. The manuscript's Ce entanglement certification is model-assisted and accounts for twisted parity and electron-number conservation.
 
