@@ -1,0 +1,42 @@
+# Minimal direct requirements for Ren2026witnessing.
+
+# Target: Linux (same platform family as the two supplied environment exports).
+#
+# conda env create -f edrixs-QFI.yml
+# conda activate edrixs-QFI
+# python -m pip check
+# Run scripts / jupyter lab from the repository root so project imports and
+# relative data paths resolve. Select this environment's notebook kernel.
+name: edrixs-QFI
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+
+  # Seven third-party packages imported by the repository.
+  - numpy=1.26.2
+  - scipy=1.11.4
+  - matplotlib-base=3.11.2
+  - edrixs=0.0.8
+  - bayesian-optimization=1.4.3
+  - tqdm=4.65.0
+  - pip
+  - pip:
+      - py-bobyqa==1.5.0
+
+  # Indirect requirements with explicit pins for compatibility/reproducibility.
+  # Bayesian Optimization uses scikit-learn's Gaussian-process implementation.
+  - scikit-learn=1.3.2
+  # EDRIXS 0.0.8 imports pkg_resources, supplied by this setuptools version.
+  - setuptools=68.2.2
+  # Other runtime dependencies (e.g. SymPy and EDRIXS's MPI/BLAS libraries)
+  # are installed by Conda from the packages' dependency metadata.
+
+  # Notebook execution tools; not dependencies of the calculation scripts.
+  - ipykernel=6.25.0
+  - jupyterlab=4
+
+# Custom project modules are included in the repository, not pip packages:
+# optEDRIXS.py, witness.py, witness_utils.py, utils_Ce.py, utils_Ta.py, plot2.py
+# plus config_Ce_t2g.py and config_Ta_Eg.py (loaded dynamically).
