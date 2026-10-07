@@ -111,15 +111,15 @@ true_values=dict(tenDq=3.5, theta=50.86, a0=0.,
 
 # parameter bounds
 pbounds = {#'tenDq': (2.5,4.5),
-           'Vdd_sigma': (-3.0,3.0),
-           'Vdd_pi': (-1.5,1.5),
+           'Vdd_sigma': (-3.0,0.0),
+           'Vdd_pi': (-1.5,0.0),
            'Vdd_delta': (-0.5,0.5),
            'F2_dd': (true_values['F2_dd']*0.1, true_values['F2_dd']*1.5),
-           'F4_dd': (true_values['F4_dd']*0.1, true_values['F2_dd']),
+           'F4_dd': (true_values['F4_dd']*0.1, true_values['F4_dd']*1.5),
            'F2_dp': (true_values['F2_dp']*0.1,true_values['F2_dp']*1.5),
            'G1_dp': (true_values['G1_dp']*0.1,true_values['G1_dp']*1.5),
            'G3_dp': (true_values['G3_dp']*0.1,true_values['G3_dp']*1.5),
-           'soc' : (0.0,1.0),
+           'soc' : (0.0,0.5),
            'soc_c' : (1130.332,1150.332)
            }
 
