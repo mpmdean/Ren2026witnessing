@@ -28,7 +28,7 @@ def turbo_w():
     modified turbo colormap with white background
     cmap = turbo_w()
     """
-    cmap = np.load('cmaps/white_turbo.npy')
+    cmap = np.load('white_turbo.npy')
     return ListedColormap(cmap)
 
 def make_theme(ax, logx=False, logy=False, grid=False, minorx=2, minory=2, ticklength=6, lw=0.5):
@@ -241,8 +241,8 @@ def sgolay(y, window_size, order, deriv=0, rate=1):
     """
 
     try:
-        window_size = np.abs(np.int(window_size))
-        order = np.abs(np.int(order))
+        window_size = np.abs(int(window_size))
+        order = np.abs(int(order))
     except ValueError:
         raise ValueError("window_size and order have to be of type int")
     if window_size % 2 != 1 or window_size < 1:
