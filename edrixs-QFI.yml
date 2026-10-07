@@ -1,6 +1,6 @@
 # Minimal direct requirements for Ren2026witnessing.
 
-# Target: Linux (same platform family as the two supplied environment exports).
+# Target: Linux x86_64 with glibc >=2.28.
 #
 # conda env create -f edrixs-QFI.yml
 # conda activate edrixs-QFI
@@ -15,10 +15,11 @@ dependencies:
   - python=3.11
 
   # Seven third-party packages imported by the repository.
-  - numpy=1.26.2
-  - scipy=1.11.4
+  # NumPy 1.x preserves compatibility with the existing optimization code.
+  - numpy=1.26.4
+  - scipy=1.15.2
   - matplotlib-base=3.11.2
-  - edrixs=0.0.8
+  - edrixs=0.1.3
   - bayesian-optimization=1.4.3
   - tqdm=4.65.0
   - pip
@@ -27,11 +28,9 @@ dependencies:
 
   # Indirect requirements with explicit pins for compatibility/reproducibility.
   # Bayesian Optimization uses scikit-learn's Gaussian-process implementation.
-  - scikit-learn=1.3.2
-  # EDRIXS 0.0.8 imports pkg_resources, supplied by this setuptools version.
-  - setuptools=68.2.2
-  # Other runtime dependencies (e.g. SymPy and EDRIXS's MPI/BLAS libraries)
-  # are installed by Conda from the packages' dependency metadata.
+  - scikit-learn=1.6.1
+  # Other runtime dependencies (e.g. SymPy, EDRIXS's MPI/BLAS libraries,
+  # and setuptools) are installed by Conda from the dependency metadata.
 
   # Notebook execution tools; not dependencies of the calculation scripts.
   - ipykernel=6.25.0
