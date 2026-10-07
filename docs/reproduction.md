@@ -1,6 +1,6 @@
 # Reproducing the optimization and QFI workflows
 
-See [main.md](../main.md) for installation, scientific context and figure outputs. All commands below run from the repository root with `edrixs-combined` active. These are equivalent workflows reconstructed from the supplied scripts, BO JSON records and refinement archives; exact historical shell paths, scheduling and all numerical settings were not recorded.
+See [main.md](../main.md) for installation, scientific context and figure outputs. All commands below run from the repository root with `edrixs-QFI` active.
 
 ## Inputs and preparation
 
@@ -10,18 +10,6 @@ Use a fresh working copy or preserve existing outputs before recalculation. BO r
 
 BO stores its JSON records and compressed evaluation logs in `Thalia/`, as configured by `output_dir`. Refinement reads those records **and the corresponding `.bz2` log archives**. Summary JSONs alone are insufficient for reconstructing the candidate list. Starting directly from the supplied collected parameter tables skips both fitting stages and the combination step.
 
-### Ce BO bounds
-
-Use the minimally corrected `config_Ce_t2g.py` supplied with this documentation. Only four lines in `pbounds` were changed from the uploaded repository config to match all nine historical Ce `test4` JSONs:
-
-| Parameter | BO bounds |
-| --- | --- |
-| `Vdd_sigma` | `(-3.0, 0.0)` |
-| `Vdd_pi` | `(-1.5, 0.0)` |
-| `F4_dd` | `(true_values['F4_dd'] * 0.1, true_values['F4_dd'] * 1.5)` |
-| `soc` | `(0.0, 0.5)` |
-
-Retain the current Ce refinement settings, including `threshold_factor = 1.2`, `optname = '_subseq_optV4V'` and the current `greedy_bounds`. The available historical BO evaluation data select 22 candidates with these settings, as verified by the author using `--num-points`. The Ta BO bounds already match the historical records; retain its `threshold_factor = 1.15` and `optname = '_subseq_optV'`.
 
 ## Ce command chain
 
@@ -58,10 +46,6 @@ python compute_ce_parity_maxima.py \
     --output-dir . --parity both --seed 42
 ```
 
-If a fresh BO run produces a different candidate count, adjust refinement ranges to cover that list without gaps or overlaps. Preserve the historical 22-row table when reproducing the supplied notebook's row selections.
-
-The final parity calculation was called the “S5 script” during workflow reconstruction. In the supplied manuscript, supplement and notebook, its results appear in **Supplementary Fig. S4**. Supplementary Fig. S5 instead shows the Ta incident-energy map. The command above follows the confirmed parity-script identity.
-
 ### Ce outputs and figure ensembles
 
 | Stage | Output |
@@ -74,8 +58,6 @@ The final parity calculation was called the “S5 script” during workflow reco
 | Parity calculation | `Ce_t2g_maxwal_P.npz`, `Ce_t2g_maxwal_M.npz` |
 
 The archived refinement vectors concatenate exactly into the supplied Ce table. Both QFI scripts explicitly read that V4V table and write V4Vr output names. Unpolarized results retain all 22 rows; polarized results use fitted row **0**. The plotting notebook selects Ce rows **[0, 3, 4, 11, 14, 18]** after excluding physically unsuitable fits. It uses two intensity normalizations for each of these six fits, producing a 12-member ensemble for experimental/model means and standard deviations.
-
-The archived V4Vr NPZs are byte-identical to the repository copies. This supports a shared parameter source; the suffix alone does not identify a change in numerical settings, and the NPZs do not store a full historical config snapshot.
 
 ## Ta command chain
 
